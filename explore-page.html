@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="CAMPUS STAY LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="syty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Campus-Stay</title>
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        min-height: 100vh;
+    }
+    .brand{
+        display: flex;
+        align-items: center;
+        gap: 15px; 
+        margin-left: 5%;
+    }
+    .logo{
+        width: 10%;
+        height: 100%;  
+    }
+    .logo-text{
+        color: white;
+        font-size: 18px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        margin-left: -5%;
+        background: linear-gradient(to right, white, rgb(126, 107, 1));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+    .mobilebtn{
+        display: none;
+    }
+    nav{
+        position: fixed;
+        background-color: rgb(2, 53, 28);
+        width: 100%;
+        height: 12%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        animation: slideDown 0.9s ease;
+    }
+    .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 30px; 
+        margin-right: 3%;
+    }
+    .navlinks ul{
+        list-style-type: none;
+        display: flex;
+        gap: 40px;
+    }
+    .navlinks ul li a{
+        text-decoration: none;
+        color: white;
+        transition: all 0.4s ease;
+        font-size: 17px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+    }
+    .navlinks ul li a:hover{
+        font-size: 20px;
+    }
+    .navlinks ul li a.active {
+        color: rgb(126, 107, 1);
+        text-decoration: underline;
+    }
+    .btn-btn{
+        display: flex;
+        gap: 10px;
+    }
+    .start-btn{
+        background: linear-gradient(to right,  rgb(13, 78, 25), rgb(126, 107, 1));
+        color: white;
+        border: 2px solid white;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        white-space: nowrap;
+        width: 100%;
+        transition: all 0.4s ease;
+        font-family: 'Poppins', sans-serif;
+    }
+    .start-btn:hover{
+        scale: 1.05;
+    }
+
+    /*TABLETS*/
+    @media (max-width: 1024px){
+        nav{
+        height: 8%;
+        }
+        .navlinks ul {
+            gap: 20px;
+        }
+        .logo {
+            width: 15%;
+        }
+        .start-btn {
+            margin-right: 15px;
+            padding: 10px 15px;
+        }
+    }
+    @media (max-width: 768px) {
+        .navlinks {
+        display: flex; 
+        position: fixed;
+        top: 8%; 
+        right: -75%;
+        width: 70%;  
+        height: auto; 
+        background-color: rgb(2, 53, 28); 
+        align-items: center;
+        padding: 50px;
+        margin-right: 0;
+        flex-direction: column;
+        transition: right 0.4s ease-in-out; 
+        z-index: 999;
+        }
+        .navlinks.active {
+            right: 0; 
+        }
+        .navlinks ul li a{
+            display: block; 
+            font-size: 20px;
+        }
+        .start-btn{
+            display: block;
+        }
+        .navlinks ul {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+        .navlinks .start-btn {
+            margin: 40px 0 0 0 !important; 
+            display: inline-block; 
+        }
+        .btn-btn {
+            flex-direction: column;
+            gap: -35px;
+        }
+        .mobilebtn {
+            display: block; 
+            background: none;
+            border: none;
+            color: white;
+            font-size: 25px;
+            margin-right: 20px;
+            cursor: pointer;
+            position: relative; 
+            z-index: 1005;
+        }
+        .logo {
+            width: auto;
+            height: 50px;
+            margin-left: -20px;
+        }
+        .logo-text {
+            font-size: 16px;
+            margin-left: -20px;
+        }
+    }
+</style>
+<body>
+    <nav class="sticky-top">
+      <div class="brand">
+        <img src="CAMPUS STAY LOGO.png" alt="logo" class="logo"><h2 class="logo-text">Campus Stay</h2>
+      </div>
+        <div class="navlinks">
+           <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a class="active" href="">Explore</a></li>
+            <li><a href="">Support</a></li>
+            </ul>
+          <div class="btn-btn">
+            <a href=""><button class="start-btn">Sign up</button></a>
+          <a href=""><button class="start-btn">Log in</button></a>  
+          </div>
+        </div>
+          <button class="mobilebtn"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const mobilebtn = document.querySelector('.mobilebtn');
+        const navLinks = document.querySelector('.navlinks');
+        const menuIcons = document.querySelector('.mobilebtn i');
+        const individualLinks = document.querySelectorAll('.navlinks ul li a'); 
+
+
+        mobilebtn.addEventListener('click', () => {
+        
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcons.classList.remove('fa-bars');
+                menuIcons.classList.add('fa-xmark');
+            } else {
+                menuIcons.classList.remove('fa-xmark');
+                menuIcons.classList.add('fa-bars');
+            }
+        });
+
+        individualLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active'); // Slides it back off-screen
+                menuIcons.classList.remove('fa-xmark');
+                menuIcons.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
