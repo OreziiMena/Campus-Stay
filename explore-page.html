@@ -8,186 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="syty.css">
+    <link rel="stylesheet" href="sty.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Campus-Stay</title>
 </head>
-<style>
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-    html{
-        scroll-behavior: smooth;
-    }
-    body{
-        min-height: 100vh;
-    }
-    .brand{
-        display: flex;
-        align-items: center;
-        gap: 15px; 
-        margin-left: 5%;
-    }
-    .logo{
-        width: 10%;
-        height: 100%;  
-    }
-    .logo-text{
-        color: white;
-        font-size: 18px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        margin-left: -5%;
-        background: linear-gradient(to right, white, rgb(126, 107, 1));
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-    }
-    .mobilebtn{
-        display: none;
-    }
-    nav{
-        position: fixed;
-        background-color: rgb(2, 53, 28);
-        width: 100%;
-        height: 12%;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 1000;
-        animation: slideDown 0.9s ease;
-    }
-    .navlinks {
-        display: flex;
-        align-items: center;
-        gap: 30px; 
-        margin-right: 3%;
-    }
-    .navlinks ul{
-        list-style-type: none;
-        display: flex;
-        gap: 40px;
-    }
-    .navlinks ul li a{
-        text-decoration: none;
-        color: white;
-        transition: all 0.4s ease;
-        font-size: 17px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-    }
-    .navlinks ul li a:hover{
-        font-size: 20px;
-    }
-    .navlinks ul li a.active {
-        color: rgb(126, 107, 1);
-        text-decoration: underline;
-    }
-    .btn-btn{
-        display: flex;
-        gap: 10px;
-    }
-    .start-btn{
-        background: linear-gradient(to right,  rgb(13, 78, 25), rgb(126, 107, 1));
-        color: white;
-        border: 2px solid white;
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 50px;
-        cursor: pointer;
-        white-space: nowrap;
-        width: 100%;
-        transition: all 0.4s ease;
-        font-family: 'Poppins', sans-serif;
-    }
-    .start-btn:hover{
-        scale: 1.05;
-    }
-
-    /*TABLETS*/
-    @media (max-width: 1024px){
-        nav{
-        height: 8%;
-        }
-        .navlinks ul {
-            gap: 20px;
-        }
-        .logo {
-            width: 15%;
-        }
-        .start-btn {
-            margin-right: 15px;
-            padding: 10px 15px;
-        }
-    }
-    @media (max-width: 768px) {
-        .navlinks {
-        display: flex; 
-        position: fixed;
-        top: 8%; 
-        right: -75%;
-        width: 70%;  
-        height: auto; 
-        background-color: rgb(2, 53, 28); 
-        align-items: center;
-        padding: 50px;
-        margin-right: 0;
-        flex-direction: column;
-        transition: right 0.4s ease-in-out; 
-        z-index: 999;
-        }
-        .navlinks.active {
-            right: 0; 
-        }
-        .navlinks ul li a{
-            display: block; 
-            font-size: 20px;
-        }
-        .start-btn{
-            display: block;
-        }
-        .navlinks ul {
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            width: 100%;
-        }
-        .navlinks .start-btn {
-            margin: 40px 0 0 0 !important; 
-            display: inline-block; 
-        }
-        .btn-btn {
-            flex-direction: column;
-            gap: -35px;
-        }
-        .mobilebtn {
-            display: block; 
-            background: none;
-            border: none;
-            color: white;
-            font-size: 25px;
-            margin-right: 20px;
-            cursor: pointer;
-            position: relative; 
-            z-index: 1005;
-        }
-        .logo {
-            width: auto;
-            height: 50px;
-            margin-left: -20px;
-        }
-        .logo-text {
-            font-size: 16px;
-            margin-left: -20px;
-        }
-    }
-</style>
 <body>
     <nav class="sticky-top">
       <div class="brand">
@@ -208,34 +32,146 @@
           <button class="mobilebtn"><i class="fas fa-bars"></i></button>
     </nav>
 
+    <section class="hero">
+        <div>
+            <h1 class="hero-text">Explore Properties</h1>
+             <p class="hero-para">Verified Apartment Near your Univeristy 
+                <br> We have a wide range of apartments for you to choose from. </p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search by university, location, or price...">
+                <button class="primary-btn"><i class="fas fa-search"></i> Search</button>
+           </div>
+           <div class="trust-badges">
+            <div class="glass-badge">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Verified Listings</span>
+            </div>
+            
+            <div class="glass-badge">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Close to Campus</span>
+            </div>
+            
+            <div class="glass-badge">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Students Only</span>
+            </div>
+            </div>
+        </div>
+    </section>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        const mobilebtn = document.querySelector('.mobilebtn');
-        const navLinks = document.querySelector('.navlinks');
-        const menuIcons = document.querySelector('.mobilebtn i');
-        const individualLinks = document.querySelectorAll('.navlinks ul li a'); 
+    <section class="properties-container">
+        <div class="property-grid">
+
+            <div class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="badge status-available">Available</span>
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartment 1" class="property-img">
+                </div>
+                <div class="property-content">
+                    <h3 class="property-price">₦150,000 <span>/ year</span></h3>
+                    <h4 class="property-title">Standard Self-Con near FUPRE Main Gate</h4>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> 5 mins from campus</p>
+                    
+                    <div class="property-amenities">
+                        <span><i class="fas fa-bed"></i> 1 Bed</span>
+                        <span><i class="fas fa-bath"></i> 1 Bath</span>
+                        <span><i class="fas fa-bolt"></i> Prepaid</span>
+                    </div>
+
+                    <a href="apartment-details.html?id=1" class="view-btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="badge status-taken">Taken</span>
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1e5240980c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartment 2" class="property-img">
+                </div>
+                <div class="property-content">
+                    <h3 class="property-price">₦250,000 <span>/ year</span></h3>
+                    <h4 class="property-title">2-Bedroom Flat for Roommate Sharing</h4>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> PTI Road Junction</p>
+                    
+                    <div class="property-amenities">
+                        <span><i class="fas fa-bed"></i> 2 Beds</span>
+                        <span><i class="fas fa-bath"></i> 2 Baths</span>
+                        <span><i class="fas fa-shield-alt"></i> Gated</span>
+                    </div>
+
+                    <a href="apartment-details.html?id=2" class="view-btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="badge status-available">Available</span>
+                    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartment 3" class="property-img">
+                </div>
+                <div class="property-content">
+                    <h3 class="property-price">₦80,000 <span>/ year</span></h3>
+                    <h4 class="property-title">Single Room Off-Campus</h4>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> Ugbomro Community</p>
+                    
+                    <div class="property-amenities">
+                        <span><i class="fas fa-bed"></i> 1 Bed</span>
+                        <span><i class="fas fa-restroom"></i> Shared Bath</span>
+                        <span><i class="fas fa-water"></i> Borehole</span>
+                    </div>
+
+                    <a href="apartment-details.html?id=3" class="view-btn">View Details</a>
+                </div>
+            </div>
+            <div class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="badge status-available">Available</span>
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartment 1" class="property-img">
+                </div>
+                <div class="property-content">
+                    <h3 class="property-price">₦150,000 <span>/ year</span></h3>
+                    <h4 class="property-title">Standard Self-Con near FUPRE Main Gate</h4>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> 5 mins from campus</p>
+                    
+                    <div class="property-amenities">
+                        <span><i class="fas fa-bed"></i> 1 Bed</span>
+                        <span><i class="fas fa-bath"></i> 1 Bath</span>
+                        <span><i class="fas fa-bolt"></i> Prepaid</span>
+                    </div>
+
+                    <a href="apartment-details.html?id=1" class="view-btn">View Details</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const mobilebtn = document.querySelector('.mobilebtn');
+    const navLinks = document.querySelector('.navlinks');
+    const menuIcons = document.querySelector('.mobilebtn i');
+    const individualLinks = document.querySelectorAll('.navlinks ul li a'); 
 
 
-        mobilebtn.addEventListener('click', () => {
-        
-            navLinks.classList.toggle('active');
-            if (navLinks.classList.contains('active')) {
-                menuIcons.classList.remove('fa-bars');
-                menuIcons.classList.add('fa-xmark');
-            } else {
-                menuIcons.classList.remove('fa-xmark');
-                menuIcons.classList.add('fa-bars');
-            }
+    mobilebtn.addEventListener('click', () => {
+    
+        navLinks.classList.toggle('active');
+        if (navLinks.classList.contains('active')) {
+            menuIcons.classList.remove('fa-bars');
+            menuIcons.classList.add('fa-xmark');
+        } else {
+            menuIcons.classList.remove('fa-xmark');
+            menuIcons.classList.add('fa-bars');
+        }
+    });
+
+    individualLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active'); // Slides it back off-screen
+            menuIcons.classList.remove('fa-xmark');
+            menuIcons.classList.add('fa-bars');
         });
-
-        individualLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active'); // Slides it back off-screen
-                menuIcons.classList.remove('fa-xmark');
-                menuIcons.classList.add('fa-bars');
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
