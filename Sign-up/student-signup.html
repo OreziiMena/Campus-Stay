@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="icon" href="CAMPUS STAY LOGO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Student-Sign Up</title>
+</head>
+<body class="auth-page">
+    <a href="../Main page/index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <section class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Sign Up for Campus Stay</h2>
+                <p>Join Campus Stay to find your perfect off-campus home.</p>
+            </div>
+
+            <form id="student-signup-form" class="auth-form">
+                
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="E.g. Olise Precious Chibuzor" required>
+                    <small class="helper-text"><i class="fas fa-info-circle"></i> Please use the exact name you enrolled in school with for easy verification.</small>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="olisepreciousc@gmail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="08012345678" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="university">University</label>
+                    <div class="select-wrapper">
+                        <select id="university" required>
+                            <option value="" disabled selected>Select your institution...</option>
+                            <option value="FUPRE">Federal University of Petroleum Resources (FUPRE)</option>
+                            <option value="DSUST">Delta State University of Science and Technology, Ozoro (DSUST)</option>
+                            <option value="DOU">Dennis Osadebay University, Asaba (DOU)</option>
+                            <option value="UNIDEL">University of Delta, Agbor (UNIDEL)</option>
+                            <option value="WDU">Western Delta University, Oghara (WDU)</option>
+                            <option value="NOVENA">Novena University, Ogume-Amai</option>
+                            <option value="PTI">Petroleum Training Institute, Effurun (PTI)</option>
+                            <option value="FEPO">Federal Polytechnic, Orogun</option>
+                            <option value="DSPG">Delta State Polytechnic, Ogwashi-Uku (DSPG)</option>
+                            <option value="DESPO">Delta State Polytechnic, Otefe-Oghara (DESPO)</option>
+                            <option value="COE_WARRI">College of Education, Warri</option>
+                            <option value="COE_MOSOGAR">Delta State College of Physical Education, Mosogar</option>
+                            </select>
+                        <i class="fas fa-chevron-down select-icon"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <div class="username-wrapper">
+                        <span class="at-prefix">@</span>
+                        <input type="text" id="username" placeholder="Enter a Preferred Username" required>
+                    </div>
+                    <small class="error-text" id="username-error" style="display: none;">This username is already taken.</small>
+                    <small class="helper-text" id="username-success" style="display: none;">This username is available.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a strong password" required>
+                    <small class="helper-text" id="password-reqs"><i class="fas fa-info-circle"></i> Must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol (@$!%*?&).</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    <small class="error-text" id="password-error">Passwords do not match.</small>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">Create Account</button>
+                
+                <p class="auth-footer-text">Already have an account? <a href="#">Log in</a></p>
+            </form>
+        </div>
+    </section>
+
+    <script src="signup.js" defer></script>
+</body>
+</html>

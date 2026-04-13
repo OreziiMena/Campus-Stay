@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="syty.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Apartment Details | Campus Stay</title>
+    <style>
+        /* ========================================= */
+        /* PROPERTY DETAILS PAGE STYLES              */
+        /* ========================================= */
+        
+        body {
+            background-color: #fafafa; /* Slight off-white background to make cards pop */
+        }
+
+        .property-details-layout {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr; /* Adjusted for slightly wider left column */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 10vh auto 60px; 
+            padding: 0 5%;
+            align-items: start; 
+        }
+
+        /* --- Image Container (Bootstrap Carousel Fixes) --- */
+        .property-image-container {
+            width: 100%;
+            height: 450px; 
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+            background-color: #000; 
+        }
+        .carousel-inner, .carousel-item {
+            height: 100%;
+        }
+        .property-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            opacity: 0.9; /* Slight dimming to match reference */
+        }
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            z-index: 10; /* Keeps it above carousel images */
+        }
+
+        /* --- Cards General --- */
+        .info-card, .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        /* --- Left Column Content --- */
+        .listing-title {
+            font-size: 28px;
+            color: #111;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        /* Rust Orange theme for highlights */
+        :root {
+            --brand-orange: #d35400; 
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 25px;
+            color: #777;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .meta-row i { color: var(--brand-orange); }
+
+        .location-row {
+            margin-bottom: 25px;
+        }
+        .location-row p {
+            color: #555;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 12px;
+        }
+        .location-row i {
+            color: var(--brand-orange);
+            width: 25px;
+            text-align: center;
+        }
+
+        .listing-price {
+            font-size: 24px;
+            color: #111;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+        }
+        .listing-price span {
+            font-size: 15px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .desc-text {
+            line-height: 1.8;
+            color: #666;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .read-more-link {
+            color: var(--brand-orange);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .info-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #111;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        /* 3-Column Amenities List */
+        .amenities-check-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns! */
+            gap: 15px;
+        }
+        .amenities-check-list li {
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            gap: 10px;
+        }
+        .amenities-check-list li i {
+            color: var(--brand-orange); /* Orange checkmarks */
+            font-size: 14px;
+        }
+
+        /* --- Right Column Sidebar --- */
+        .sidebar {
+            position: sticky;
+            top: 12vh; 
+        }
+        .card-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Listed By Section */
+        .agent-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .avatar-circle {
+            width: 55px;
+            height: 55px;
+            background: var(--brand-orange); /* Rust orange background */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .agent-info h5 {
+            font-size: 16px;
+            color: #111;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin: 0 0 3px 0;
+        }
+        .verified-icon { color: #00e676; font-size: 14px; margin-left: 5px; } 
+        .agent-role {
+            font-size: 13px;
+            color: #999;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .whatsapp-btn {
+            background: #25D366; /* Official WhatsApp Green */
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 20px;
+        }
+        .whatsapp-btn:hover { background: #1ebe57; }
+        .whatsapp-btn i { margin-right: 8px; font-size: 18px; }
+
+        .view-listings-link {
+            display: block;
+            text-align: center;
+            color: var(--brand-orange);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Actions Section */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .action-btn {
+            flex: 1;
+            background: white;
+            border: 1px solid #eee;
+            padding: 12px;
+            border-radius: 8px;
+            color: #555;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .action-btn:hover { background: #f9f9f9; border-color: #ccc; }
+        .action-btn .fa-share-alt { color: var(--brand-orange); margin-right: 5px; }
+        .action-btn .fa-flag { color: #888; margin-right: 5px; }
+
+        /* Safety Tips Section */
+        .safety-card {
+            background-color: #fffaf0; /* Pale orange/yellow tint */
+            border-color: #fce8b2;
+        }
+        .safety-heading {
+            color: #b25000; /* Darker orange for text */
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .safety-heading i {
+            margin-right: 5px;
+        }
+        .safety-list {
+            padding-left: 18px;
+            color: #777;
+            font-size: 13px;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .safety-list li {
+            margin-bottom: 8px;
+            color: #b25000; /* Orange bullets */
+        }
+        .safety-list li span {
+            color: #666; /* Keep text grey */
+        }
+
+        .full-width { width: 100%; display: block; }
+
+        /* ========================================= */
+        /* MOBILE RESPONSIVENESS FOR DETAILS PAGE    */
+        /* ========================================= */
+        @media (max-width: 900px) {
+            .property-details-layout {
+                grid-template-columns: 1fr; 
+                margin-top: 10vh;
+            }
+            .sidebar { position: static; }
+            .amenities-check-list { grid-template-columns: repeat(2, 1fr); } /* 2 cols on mobile */
+            .listing-title { font-size: 24px; }
+            .property-image-container { height: 250px; }
+        }
+        @media (max-width: 480px) {
+            .amenities-check-list { grid-template-columns: 1fr; } /* 1 col on small phones */
+        }
+    </style>
+</head>
+<body>
+
+    <main class="property-details-layout">
+        
+        <div class="main-info">
+            
+            <div id="carouselExampleIndicators" class="carousel slide property-image-container">
+                
+                <div class="carousel-indicators" style="bottom: -10px;"> <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img id="apt-img" src="" class="property-main-image" alt="Apartment Image">
+                    </div>
+                    <div class="carousel-item active">
+                        <img id="apt-img" src="" class="property-main-image" alt="Apartment Image">
+                    </div>
+                    <div class="carousel-item active">
+                        <img id="apt-img" src="" class="property-main-image" alt="Apartment Image">
+                    </div>
+                    <div class="carousel-item active">
+                        <img id="apt-img" src="" class="property-main-image" alt="Apartment Image">
+                    </div>
+                    </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            
+            <div class="info-card">
+                <h1 id="apt-title" class="listing-title">Loading Apartment...</h1>
+
+                <div class="meta-row">
+                    <span><i class="far fa-eye"></i> 90 views</span>
+                    <span><i class="fas fa-home"></i> Hostel</span>
+                    <span><i class="far fa-calendar-alt"></i> Listed recently</span>
+                </div>
+
+                <div class="location-row">
+                    <p><i class="fas fa-location-arrow"></i> <span id="apt-location">FUPRE Road, Effurun</span></p>
+                    <p><i class="fas fa-walking"></i> 5-10mins walk to campus</p>
+                </div>
+
+                <h2 class="listing-price" id="apt-price">₦---,--- <span>/ year</span></h2>
+
+                <p id="apt-desc" class="desc-text">Please wait while we fetch the apartment details...</p>
+                <a href="#" class="read-more-link">Read more</a>
+            </div>
+
+            <div class="info-card">
+                <h3>Amenities</h3>
+                <ul id="apt-amenities" class="amenities-check-list">
+                    </ul>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            
+            <div class="sidebar-card">
+                <h4 class="card-heading">Listed by</h4>
+                
+                <div class="agent-profile">
+                    <div class="avatar-circle"><i class="fas fa-home"></i></div>
+                    <div class="agent-info">
+                        <h5>Campus Stay Official <i class="fas fa-check-circle verified-icon"></i></h5>
+                        <p class="agent-role">Property Agent</p>
+                    </div>
+                </div>
+
+                <button class="whatsapp-btn full-width"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</button>
+                <a href="#" class="view-listings-link">View all listings by this agent &rarr;</a>
+            </div>
+
+            <div class="sidebar-card">
+                <h4 class="card-heading">Actions</h4>
+                <div class="action-buttons">
+                    <button class="action-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    <button class="action-btn"><i class="far fa-flag"></i> Report</button>
+                </div>
+            </div>
+
+            <div class="sidebar-card safety-card">
+                <h4 class="safety-heading"><i class="fas fa-shield-alt"></i> Safety Tips</h4>
+                <ul class="safety-list">
+                    <li><span>Never pay before inspecting the apartment.</span></li>
+                    <li><span>Always verify the agent's identity in person.</span></li>
+                    <li><span>Report suspicious listings immediately.</span></li>
+                    <li><span>Get a proper tenancy agreement.</span></li>
+                </ul>
+            </div>
+
+        </aside>
+    </main>
+
+    <script>
+        const database = [
+            {
+                id: 1,
+                title: "Standard Self-Con near FUPRE Main Gate",
+                price: "₦150,000 / year",
+                image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                description: "A spacious, newly painted self-contained apartment just a 5-minute walk from the FUPRE main gate. Perfect for a student who wants peace and quiet. Comes with running water and prepaid meter.",
+                amenities: ["Electricity", "Water", "Security", "Washing Machine", "Microwave", "Mattress"]
+            },
+            {
+                id: 2,
+                title: "2-Bedroom Flat for Roommate Sharing",
+                price: "₦250,000 / year",
+                image: "https://images.unsplash.com/photo-1502672260266-1c1e5240980c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                description: "Large 2-bedroom flat ideal for two students to share. Includes a large kitchen, two bathrooms, and a spacious living room. Located in a secure estate.",
+                amenities: ["2 Bathrooms", "Security Gate", "Spacious Kitchen", "Ample Parking", "Wardrobes"]
+            }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const aptId = parseInt(urlParams.get('id'));
+        const apartment = database.find(apt => apt.id === aptId);
+
+        if (apartment) {
+            document.getElementById('apt-title').innerText = apartment.title;
+            document.getElementById('apt-price').innerText = apartment.price;
+            document.getElementById('apt-desc').innerText = apartment.description;
+            document.getElementById('apt-img').src = apartment.image;
+
+            const amenitiesList = document.getElementById('apt-amenities');
+            amenitiesList.innerHTML = ""; 
+            
+            apartment.amenities.forEach(amenity => {
+                let li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${amenity}`; 
+                amenitiesList.appendChild(li);
+            });
+        } else {
+            document.getElementById('apt-title').innerText = "Apartment Not Found";
+            document.getElementById('apt-desc').innerText = "Sorry, we couldn't find the apartment you were looking for. It may have been rented out.";
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
