@@ -188,6 +188,25 @@ html{
 .agent-submit-btn:hover {
     background: #b24700;
 }
+.password-label-row {
+    margin-bottom: 8px;
+}
+.password-label-row label {
+    margin-bottom: 0;
+}
+.forgot-password-link {
+    font-size: 13px;
+    color: #d35400;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin-left: 65%;
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
 @media (max-width: 768px) {
     .auth-card { 
         padding: 20px 10px; 
@@ -205,5 +224,9 @@ html{
     }
     .auth-header p{
         font-size: 13px;
+    }
+    .forgot-password-link{
+        font-size: 12px;
+        margin-left: 62%;
     }
 }

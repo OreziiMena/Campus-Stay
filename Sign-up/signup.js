@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Looks for either the student form OR the agent form dynamically
+    // Looks for either the student form OR the agent form 
     const form = document.getElementById("student-signup-form") || document.getElementById("agent-signup-form");
     if (!form) 
         return;
@@ -14,36 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const usernameErrorText = document.getElementById("username-error");
     const usernameSuccessText = document.getElementById("username-success");
 
-
-    //I used this to test the username validation logic
-    const takenUsernames = ["orezi", "campus_stay", "admin123", "student2026"];
-
+    // Live formatting for username
     usernameInput.addEventListener("input", () => {
+        // 1. If they manually typed an @, remove it so we don't have @@
         if (usernameInput.value.startsWith("@")) {
             usernameInput.value = usernameInput.value.substring(1);
         }
 
-        // Getting clean value for checking
-        const currentUsername = usernameInput.value.toLowerCase();
-
-        //Validation Logic
-        if (takenUsernames.includes(currentUsername) && currentUsername !== "") {
-            usernameInput.classList.add("invalid-input");
-            usernameErrorText.style.display = "block";
-            usernameSuccessText.style.display = "none";
-        } else {
-            usernameInput.classList.remove("invalid-input");
-            usernameErrorText.style.display = "none";
-            usernameSuccessText.style.display = "block";
-        }
+        // 2. Hide any previous error states while they are typing
+        usernameInput.classList.remove("invalid-input");
+        if (usernameErrorText) usernameErrorText.style.display = "none";
+        if (usernameSuccessText) usernameSuccessText.style.display = "none";
     });
 
+    // Live validation for password strength
     passwordInput.addEventListener("input", () => {
         if (strongPasswordRegex.test(passwordInput.value)) {
-            passwordReqsText.style.color = "#28a745";
+            passwordReqsText.style.color = "#28a745"; // Turns green
             passwordInput.classList.remove("invalid-input");
         } else {
-            passwordReqsText.style.color = "#dc3545";
+            passwordReqsText.style.color = "#dc3545"; // Turns red
             passwordInput.classList.add("invalid-input");
         }
     });
@@ -51,21 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         let isValid = true;
         
-        // Clean username one last time before final check
         if (usernameInput.value.startsWith("@")) {
             usernameInput.value = usernameInput.value.substring(1);
         }
         const finalUsername = usernameInput.value.toLowerCase();
 
-        //Checking if username is taken 
-        if (takenUsernames.includes(finalUsername)) {
-            e.preventDefault(); 
-            usernameInput.classList.add("invalid-input");
-            usernameErrorText.style.display = "block";
-            isValid = false;
-        }
-
-        //Checking strong password
+        // Checking strong password
         if (!strongPasswordRegex.test(passwordInput.value)) {
             e.preventDefault();
             passwordInput.classList.add("invalid-input");
@@ -73,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
         }
 
-        //Checking if passwords match
+        // Checking if passwords match
         if (passwordInput.value !== confirmInput.value) {
             e.preventDefault(); 
             confirmInput.classList.add("invalid-input");
@@ -86,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (isValid) {
             // Success logic will go here
-            // console.log("Final username to save: @" + finalUsername);
+            // This is where the future fetch() call to the Django backend will happen.
         }
     });
 });

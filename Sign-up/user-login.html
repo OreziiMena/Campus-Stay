@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="icon" href="..//CAMPUS STAY LOGO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Log In | Campus Stay</title>
+</head>
+<body class="auth-page">
+
+    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <section class="auth-container">
+        <div class="auth-card" style="max-width: 450px; margin: 0 auto;">
+            
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Log in to your Campus Stay account.</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <div class="password-label-row">
+                        <label for="password">Password</label>
+                    </div>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <a href="#" class="forgot-password-link">Forgot Password?</a>
+                    <small class="error-text" id="login-error">Invalid email or password.</small>
+                </div>
+
+                <button type="submit" class="auth-submit-btn" style="margin-top: 10px;">Log In</button>
+                
+                <p class="auth-footer-text">Don't have an account? <a href="rolepick.html">Sign up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("login-form");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginErrorText = document.getElementById("login-error");
+
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault(); 
+
+        const enteredEmail = emailInput.value.toLowerCase();
+        const enteredPassword = passwordInput.value;
+
+        //BACKEND INTEGRATION SHOULD GO HERE. PLEASE UNCOMMENT AND UPDATE THE FETCH CALL WHEN CONNECTED TO THE DATABASE 
+        
+        /* fetch("https://api.yourdomain.com/auth/login", { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: enteredEmail,
+                password: enteredPassword
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Invalid credentials or server error");
+            }
+            return response.json();
+        })
+        .then(data => { */
+            
+            loginErrorText.style.display = "none";
+            emailInput.classList.remove("invalid-input");
+            passwordInput.classList.remove("invalid-input");
+            
+            // Redirecting based on the role the backend sends back
+            if (data.role === "student") {
+                window.location.href = "student-dashboard.html";
+            } else if (data.role === "agent") {
+                window.location.href = "agent-dashboard.html";
+            }
+        })
+        .catch(error => {
+            // Wrong email or password
+            loginErrorText.style.display = "block";
+            loginErrorText.innerText = "Invalid email or password.";
+            emailInput.classList.add("invalid-input");
+            passwordInput.classList.add("invalid-input");
+            
+            // Clear the password field so they can try again easily
+            passwordInput.value = ""; 
+        });
+       
+    });
+//});Please uncomment the above line when connecting to the backend
+    </script>
+</body>
+</html>
