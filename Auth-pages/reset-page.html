@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="icon" href="../CAMPUS STAY LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <title>Create New Password | Campus Stay</title>
+</head>
+<body class="auth-page">
+     <a href="user-login.html" class="back-link"><i class="fas fa-arrow-left"></i> Go back</a>
+
+    <div class="auth-container">
+        <div class="auth-card" style="max-width: 450px; margin: 0 auto;">
+        <div class="auth-header">
+            <h2>Set New Password</h2>
+            <p>Your new password must be different from previous used passwords.</p>
+        </div>
+
+        <form id="new-password-form">
+            <input type="hidden" id="reset-token" value="">
+
+            <div class="input-group">
+                <label for="new-password">New Password</label>
+                <div class="password-wrapper">
+                <input type="password" id="new-password" required>
+                <i class="fas fa-eye toggle-password" id="toggle-password-icon"></i>
+            </div>
+                <small class="helper-text" id="password-reqs" style="font-size: 12px; color: #666; margin-top: 5px; display: block;">
+                    Must be at least 8 characters with 1 uppercase, 1 number, and 1 special character.
+                </small>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirm-password" required>
+                    <i class="fas fa-eye toggle-password" id="toggle-confirm-password-icon"></i>
+                </div>
+                <small class="error-text" id="match-error" style="display: none;">Passwords do not match.</small>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="submit-btn" style="width: 100%; margin-top: 10px;">Update Password</button>
+        </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("new-password-form");
+    const newPasswordInput = document.getElementById("new-password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
+    const passwordReqsText = document.getElementById("password-reqs");
+    const matchErrorText = document.getElementById("match-error");
+    const submitBtn = document.getElementById("submit-btn");
+    const togglePasswordIcon = document.getElementById("toggle-password-icon");
+    const toggleConfirmPasswordIcon = document.getElementById("toggle-confirm-password-icon");
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+    //Toggle password icon 
+    if (togglePasswordIcon && newPasswordInput) {
+        togglePasswordIcon.addEventListener("click", () => {
+            
+            // Check current type and swap it
+            const type = newPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+            newPasswordInput.setAttribute("type", type);
+            
+            // Swap the FontAwesome icon classes
+            togglePasswordIcon.classList.toggle("fa-eye");
+            togglePasswordIcon.classList.toggle("fa-eye-slash");
+        });
+    }
+    //Toggle confirm password icon 
+    if (toggleConfirmPasswordIcon && confirmPasswordInput) {
+        toggleConfirmPasswordIcon.addEventListener("click", () => {
+            
+            // Check current type and swap it
+            const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+            confirmPasswordInput.setAttribute("type", type);
+            
+            // Swap the FontAwesome icon classes
+            toggleConfirmPasswordIcon.classList.toggle("fa-eye");
+            toggleConfirmPasswordIcon.classList.toggle("fa-eye-slash");
+        });
+    }
+
+    // Live validation for password strength
+    newPasswordInput.addEventListener("input", () => {
+        if (strongPasswordRegex.test(newPasswordInput.value)) {
+            passwordReqsText.style.color = "#28a745"; // Turns green
+            newPasswordInput.classList.remove("invalid-input");
+        } else {
+            passwordReqsText.style.color = "#666"; 
+        }
+    });
+
+    form.addEventListener("submit", (e) => {
+        let isValid = true;
+        
+        // 1. Check password strength
+        if (!strongPasswordRegex.test(newPasswordInput.value)) {
+            passwordReqsText.style.color = "#28a745"; // Turns green
+            newPasswordInput.classList.remove("invalid-input");
+        }else {
+            passwordReqsText.style.color = "#dc3545"; // Turns red
+            newPasswordInput.classList.add("invalid-input");
+        }
+
+        // 2. Check if passwords match
+        if (newPasswordInput.value !== confirmPasswordInput.value) {
+            e.preventDefault(); 
+            confirmPasswordInput.classList.add("invalid-input");
+            passwordReqsText.style.display = "none";
+            matchErrorText.style.display = "block"; 
+            isValid = false;
+        } else {
+            confirmPasswordInput.classList.remove("invalid-input");
+            matchErrorText.style.display = "none";
+        }
+
+        if (isValid) {
+            e.preventDefault(); 
+
+            //SIMULATION (PLEASE REMOVE WHEN CONNECTING TO BACKEND)
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Updating Password...";
+
+            // Simulate the backend processing the new password
+            setTimeout(() => {
+                alert("Password successfully updated! You can now log in.");
+                window.location.href = "user-login.html"; 
+            }, 1000);
+
+            
+            //BACKEND INTEGRATION SHOULD GO HERE. PLEASE UNCOMMENT AND UPDATE WHEN CONNECTING TO THE DATABASE
+            // Note: You will need to extract the unique token from the URL!
+            
+            /* // Get the unique token from the URL (e.g. ?token=123xyz)
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');*/
+        }
+    });
+});
+    </script>
+</body>
+</html>
