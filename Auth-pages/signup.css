@@ -289,4 +289,14 @@ html{
         font-size: 12px;
         margin-left: 62%;
     }
+    .checkbox-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        margin-top: 2px; 
+        accent-color: rgb(2, 53, 28); 
+    }
+    .checkbox-group{
+        gap: 8px;
+    }
 }
