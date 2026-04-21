@@ -9,10 +9,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const passwordReqsText = document.getElementById("password-reqs");
     const passwordErrorText = document.getElementById("password-error");
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    
     const usernameInput = document.getElementById("username");
     const usernameErrorText = document.getElementById("username-error");
     const usernameSuccessText = document.getElementById("username-success");
+    const togglePasswordIcon = document.getElementById("toggle-password-icon");
+    const toggleConfirmPasswordIcon = document.getElementById("toggle-confirm-password-icon");
+    const termsCheckbox = document.getElementById("terms-checkbox");
+    const termsErrorText = document.getElementById("terms-error");
+
+    // Toggle password icon
+    if (togglePasswordIcon && passwordInput) {
+        togglePasswordIcon.addEventListener("click", () => {
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+            togglePasswordIcon.classList.toggle("fa-eye");
+            togglePasswordIcon.classList.toggle("fa-eye-slash");
+        });
+    }
+
+    if (toggleConfirmPasswordIcon && confirmInput) {
+        toggleConfirmPasswordIcon.addEventListener("click", () => {
+            const type = confirmInput.getAttribute("type") === "password" ? "text" : "password";
+            confirmInput.setAttribute("type", type);
+            toggleConfirmPasswordIcon.classList.toggle("fa-eye");
+            toggleConfirmPasswordIcon.classList.toggle("fa-eye-slash");
+        });
+    }
+
 
     // Live formatting for username
     usernameInput.addEventListener("input", () => {
@@ -65,6 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
             passwordErrorText.style.display = "none";
         }
 
+            //Terms and Conditions
+        if (!termsCheckbox.checked) {
+            e.preventDefault(); 
+            termsErrorText.style.display = "block"; // Show the error
+            isValid = false;
+        } else {
+            termsErrorText.style.display = "none";  // Hide the error
+        }
         if (isValid) {
             // Success logic will go here
             // This is where the future fetch() call to the Django backend will happen.

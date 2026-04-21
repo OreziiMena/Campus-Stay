@@ -10,7 +10,7 @@
     <title>Student-Sign Up</title>
 </head>
 <body class="auth-page">
-    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <a href="rolepick.html" class="back-link"><i class="fas fa-arrow-left"></i> Go Back</a>
 
     <section class="auth-container">
         <div class="auth-card">
@@ -72,15 +72,31 @@
 
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Create a strong password" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Create a strong password" required>
+                        <i class="fas fa-eye toggle-password" id="toggle-password-icon"></i>
+                    </div>
                     <small class="helper-text" id="password-reqs"><i class="fas fa-info-circle"></i> Must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol (@$!%*?&).</small>
                 </div>
 
                 <div class="input-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                        <i class="fas fa-eye toggle-password" id="toggle-confirm-password-icon"></i>
+                    </div>
                     <small class="error-text" id="password-error">Passwords do not match.</small>
                 </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms-checkbox">
+                    <label for="terms-checkbox">
+                        I have read and agree to the <a href="../Footer-link pages/terms.html" target="_blank" class="auth-link">Terms and Conditions</a> and <a href="../Footer-link pages/privacy.html" target="_blank" class="auth-link">Privacy Policy</a>.
+                    </label>
+                </div>
+                <small class="error-text" id="terms-error" style="display: none; margin-bottom: 20px;">
+                    You must agree to the Terms and Conditions to create an account.
+                </small>
 
                 <button type="submit" class="auth-submit-btn">Create Account</button>
                 
