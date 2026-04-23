@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Authentication check(Backend should also verify this on every request to protected endpoints, this is just a simple client-side check to prevent unauthorized access to the dashboard)
+    // Authentication check-Backend should also verify this on every request to protected endpoints to prevent unauthorized access to the dashboard
     // This is a simple client-side check to prevent unauthorized access to the dashboard.
 
     //sidebar logic
