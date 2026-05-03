@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="agent-dashboard.css">
-    <link rel="icon" href="..//CAMPUS STAY LOGO.png">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../Assets/CAMPUS STAY LOGO.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Agent Dashboard | Campus Stay</title>
 </head>
+
 <body>
-    <div class="dashboard-layout">   
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h2 class="logo-text"><img class="logo" src="../whitebg-logo.jpg" alt=""> Campus Stay</h2>
-            <button class="close-sidebar-btn" id="close-sidebar"><i class="fas fa-times"></i></button>
-        </div>
-        <ul class="sidebar-nav">
-            <li><a href="#" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="#"><i class="fas fa-building"></i> My Properties</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> Inquiries <span class="badge" id="nav-inquiry-badge">0</span></a></li>
-            <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-        </ul>
-
-        <div class="sidebar-footer">
-            <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</button>
-        </div>
-    </aside>
-
-    <main class="dashboard-main">
-        <header class="dashboard-header">
-            <button class="menu-toggle-btn" id="menu-toggle"><i class="fas fa-bars"></i></button>
-            
-            <div class="header-right">
-                <button class="notification-btn" id="notification-btn"><i class="fas fa-bell"></i></button>
-                <div class="profile-dropdown" id="profile-dropdown-btn">
-                    <div class="profile-info">
-                        <img src="https://ui-avatars.com/api/?name=Agent&background=d35400&color=fff" alt="Profile" class="profile-pic" id="nav-profile-pic">
-                        <span class="profile-name" id="nav-profile-name">Loading...</span>
-                    </div>
-
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="#"><i class="fas fa-user"></i> My Profile</a>
-                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="../Sign-up/user-login.html" class="logout-link"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-                    </div>
-                </div>
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="logo-text">Campus Stay</h2>
+                <button class="close-sidebar-btn" id="close-sidebar"><i class="fas fa-times"></i></button>
             </div>
-        </header>
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-building"></i> My Properties</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Inquiries <span class="badge" id="nav-inquiry-badge">0</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
 
-        <div class="dashboard-content">
-            <div class="welcome-banner">
-                <div>
-                    <h1 id="welcome-text">Welcome back, <span id="welcome-name">...</span>! 👋</h1>
-                    <p>Here is what's happening with your properties today.</p>
-                </div>
-                <button class="add-properties-btn"><i class="fas fa-plus"></i> Add New Property</button>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</button>
             </div>
+        </aside>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-home"></i></div>
-                    <div class="stat-details">
-                        <h3 id="stat-total-properties">-</h3>
-                        <p>Total Properties</p>
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <button class="menu-toggle-btn" id="menu-toggle"><i class="fas fa-bars"></i></button>
+
+                <div class="header-right">
+                    <button class="notification-btn" id="notification-btn"><i class="fas fa-bell"></i></button>
+                    <button class="notification-btn" id="theme-toggle-btn">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <div class="profile-dropdown" id="profile-dropdown-btn">
+                        <div class="profile-info">
+                            <img src="https://ui-avatars.com/api/?name=Agent&background=d35400&color=fff" alt="Profile"
+                                class="profile-pic" id="nav-profile-pic">
+                            <span class="profile-name" id="nav-profile-name">Loading...</span>
+                        </div>
+
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="../Agent Dashboard/Agent Profile/profile-page.html"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="../../Auth-pages/user-login.html" class="logout-link"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="stat-details">
-                        <h3 id="stat-active-listings">-</h3>
-                        <p>Active Listings</p>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div>
+                        <h1 id="welcome-text">Welcome back, <span id="welcome-name">...</span>! 👋</h1>
+                        <p>Here is what's happening with your properties today.</p>
+                    </div>
+                    <button class="add-properties-btn"><i class="fas fa-plus"></i> Add New Property</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-home"></i></div>
+                        <div class="stat-details">
+                            <h3 id="stat-total-properties">-</h3>
+                            <p>Total Properties</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-details">
+                            <h3 id="stat-active-listings">-</h3>
+                            <p>Active Listings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                        <div class="stat-details">
+                            <h3 id="stat-new-inquiries">-</h3>
+                            <p>New Inquiries</p>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-comments"></i></div>
-                    <div class="stat-details">
-                        <h3 id="stat-new-inquiries">-</h3>
-                        <p>New Inquiries</p>
+
+                <div class="recent-section">
+                    <div class="section-header">
+                        <h2>Recent Student Inquiries</h2>
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="inquiry-list" id="inquiries-container">
+                        <p style="color: #888; font-family: 'Open Sans', sans-serif; font-size: 14px;">Loading recent
+                            inquiries...</p>
                     </div>
                 </div>
+
             </div>
 
-            <div class="recent-section">
-                <div class="section-header">
-                    <h2>Recent Student Inquiries</h2>
-                    <a href="#">View All</a>
-                </div>
-                
-                <div class="inquiry-list" id="inquiries-container">
-                    <p style="color: #888; font-family: 'Open Sans', sans-serif; font-size: 14px;">Loading recent inquiries...</p>
-                </div>
-            </div>
-
-        </div>
         </main>
     </div>
 
     <script src="agent-dash.js" defer></script>
 </body>
+
 </html>
