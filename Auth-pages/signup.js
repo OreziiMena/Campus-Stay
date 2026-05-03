@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (isValid) {
             // Success logic will go here
-            // This is where the future fetch() call to the Django backend will happen.
+            // This is where the future fetch() call to the backend will happen.
         }
     });
 });

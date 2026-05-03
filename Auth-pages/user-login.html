@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signup.css">
-    <link rel="icon" href="..//CAMPUS STAY LOGO.png">
+    <link rel="icon" href="../Assets/CAMPUS STAY LOGO.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Log In | Campus Stay</title>
@@ -95,9 +95,9 @@
             
             // Redirecting based on the role the backend sends back
             if (data.role === "student") {
-                window.location.href = "student-dashboard.html";
+                //window.location.href = "student-dashboard.html"; UNCOMMENT WHEN RIGHT FILE PATH IS FINALIZED
             } else if (data.role === "agent") {
-                window.location.href = "agent-dashboard.html";
+                //window.location.href = "agent-dashboard.html";  UNCOMMENT WHEN RIGHT FILE PATH IS FINALIZED
             }
         })
         .catch(error => {
