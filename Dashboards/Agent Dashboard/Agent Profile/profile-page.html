@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile-page.css">
+    <link rel="stylesheet" href="../agent-dashboard.css">
+    <link rel="icon" href="../../../assets/CAMPUS STAY LOGO.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>My Profile | Campus Stay Agent</title>
+</head>
+
+<body class="dashboard-body">
+
+    <a href="../agent-dashboard.html" class="back-link"><i class="fas fa-arrow-left"></i> Go back</a>
+
+    <main class="profile-layout">
+
+        <div class="profile-header-card">
+            <div class="profile-avatar-large">
+                <span id="avatar-initials">--</span>
+            </div>
+            <div class="profile-title">
+                <h2>
+                    <span id="display-name">...</span>
+                    <span class="verified-badge" id="agent-badge" title="Verified Campus Stay Agent">
+                        <i class="fas fa-shield-check"></i>
+                    </span>
+                </h2>
+                <p><span id="display-email">.....</span></p>
+                <span class="status-pill pending" id="status-pill">Unverified Agent</span>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="tab-btn active" data-target="details-section">Personal Details</button>
+            <button class="tab-btn" data-target="verification-section">Identity Verification</button>
+            <button class="tab-btn" data-target="security-section">Security</button>
+        </div>
+
+        <section id="details-section" class="tab-content active">
+            <h3 class="h-header">Update Information</h3>
+            <form id="profile-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" id="input-first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Last Name</label>
+                        <input type="text" id="input-last-name" placeholder="Last Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="input-phone" placeholder="+234 --- --- ----" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Agency Name (Optional)</label>
+                        <input type="text" id="input-agency">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Bio / About Me</label>
+                    <textarea rows="4" id="input-bio"></textarea>
+                </div>
+                <button type="submit" class="primary-btn">Save Changes</button>
+            </form>
+        </section>
+
+        <section id="verification-section" class="tab-content" style="display: none;">
+
+            <div class="verification-banner success" id="banner-verified">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Identity Verified</h4>
+                    <p>Your account is fully verified. Your listings are public and you bear the verified agent badge.
+                    </p>
+                </div>
+            </div>
+
+            <div class="verification-banner warning" id="banner-unverified">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <h4>Verification Required</h4>
+                    <p>Your account is unverified. You must upload your NIN or government ID before your property
+                        listings can go public.</p>
+                </div>
+            </div>
+
+            <form id="verification-form">
+                <h3 class="h-header">Document Upload</h3>
+                <p class="p-header">Upload your National Identification Number (NIN) slip or government-issued ID.</p>
+
+                <div class="file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your document here, or <span>browse</span></p>
+                    <input type="file" id="nin-upload" accept=".pdf, .jpg, .jpeg, .png">
+                </div>
+
+                <button type="submit" class="primary-btn" style="margin-top: 20px;" disabled>Submit for Review</button>
+            </form>
+
+        </section>
+
+        <section id="security-section" class="tab-content" style="display: none;">
+            <h3 class="h-header">Change Password</h3>
+            <form id="security-form">
+                <div class="input-group">
+                    <label>Current Password</label>
+                    <input type="password" required>
+                </div>
+                <div class="input-group">
+                    <label>New Password</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="primary-btn">Update Password</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+
+<script src="profile-page.js" defer></script>
+<script src="../agent-dash.js"></script>
+</body>
+
+</html>
